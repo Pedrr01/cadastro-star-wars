@@ -1,5 +1,6 @@
-package dev.pedro.CadastroStarWars;
+package dev.pedro.CadastroStarWars.Personagens;
 
+import dev.pedro.CadastroStarWars.Missoes.MissoesModel;
 import jakarta.persistence.*;
 
 @Entity
@@ -12,6 +13,9 @@ public class PersonagemModel {
     private String nome;
     private String email;
     private int idade;
+    @ManyToMany
+    @JoinColumn(name = "missoes_id")
+    private MissoesModel missoes;
 
     public PersonagemModel(){
     }
