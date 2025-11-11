@@ -1,5 +1,6 @@
 package dev.pedro.CadastroStarWars.Personagens;
 
+import dev.pedro.CadastroStarWars.Missoes.MissoesModel;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,24 +21,27 @@ public class PersonagemController {
         return personagemService.listarPersonagens();
     }
 
-    // Listar personagen por ID:
+    // Listar personagem por ID:
     @GetMapping("listar/{id}")
     public PersonagemModel listarPersonagensPorId(@PathVariable Long id){
         return personagemService.listarPersonagemPorID(id);
     }
 
+    // Criando personagem:
     @PostMapping("criar")
     public PersonagemModel criarPersonagem(@RequestBody PersonagemModel personagem){
         return personagemService.criarPersonagem(personagem);
     }
 
-    @PutMapping("alterar")
-    public String alterar(){
-        return "NADA";
+    // Deletando personagem por ID: SEMPRE VOID
+    @DeleteMapping("deletar/{id}")
+    public void deletarPersonagem(@PathVariable Long id){
+        personagemService.deletarPersonagem(id);
     }
 
-    @DeleteMapping("deletar")
-    public String deletar(){
-        return "NADA";
+    // Atualizando personagem por ID:
+    @PutMapping("atualizar/{id}")
+    public PersonagemModel atualizarPersonagem(@PathVariable Long id, @RequestBody PersonagemModel personagemAtualizado){
+        return personagemService.atualizarPersonagem(id,personagemAtualizado);
     }
 }

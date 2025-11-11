@@ -1,5 +1,6 @@
 package dev.pedro.CadastroStarWars.Personagens;
 
+import dev.pedro.CadastroStarWars.Missoes.MissoesModel;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,6 +30,17 @@ public class PersonagemService {
         return personagemRepository.save(personagem);
     }
 
+    // Deletando personagem por ID: SEMPRE VOID
+    public void deletarPersonagem(Long id){
+        personagemRepository.deleteById(id);
+    }
 
-
+    // Atualizando personagem por ID:
+    public PersonagemModel atualizarPersonagem(Long id, PersonagemModel personagemAtualizado){
+        if(personagemRepository.existsById(id)){
+            personagemAtualizado.setId(id);
+            return personagemRepository.save(personagemAtualizado);
+        }
+        return null;
+    }
 }
