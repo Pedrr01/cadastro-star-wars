@@ -1,5 +1,6 @@
 package dev.pedro.CadastroStarWars.Missoes;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.pedro.CadastroStarWars.Personagens.PersonagemModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -21,6 +22,7 @@ public class MissoesModel {
     private String nome;
     private String dificuldade;
     @OneToMany(mappedBy = "missoes")
+    @JsonIgnore
     private List<PersonagemModel> personagem;
 
 }

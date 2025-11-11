@@ -1,4 +1,6 @@
 package dev.pedro.CadastroStarWars.Personagens;
 
-public interface PersonagemRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PersonagemRepository extends JpaRepository<PersonagemModel, Long> {
 }
